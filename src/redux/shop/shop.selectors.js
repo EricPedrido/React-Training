@@ -22,8 +22,9 @@ export const selectCollectionsForPreview = createSelector(
 );
 
 export const selectCollection = memoize((collectionUrlParam) =>
-  createSelector(
-    [selectCollections],
-    (collections) => collections[collectionUrlParam]
+  createSelector([selectCollections], (collections) =>
+    collections.find(
+      (collection) => collection.id === COLLECTION_ID_MAP[collectionUrlParam]
+    )
   )
 );
